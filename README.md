@@ -1,1 +1,5 @@
 # Django-Kids-Math
+
+This is a math site for kids. I made it for my daughter.
+Its not ment for production!
+Only use in localhost. 
