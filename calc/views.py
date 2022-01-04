@@ -183,10 +183,13 @@ def mul(request):
         endTime = datetime.now()
         timing = endTime - startTime
         del li[0:10]
-        
+
         if request.user.is_authenticated:
             add = Adding(time=str(timing), correct = str(len(correct_ans)), wrong=str(len(wrong_ans)),user=request.user)
             add.save()
+            if len(correct_ans) == 10:
+                count = Star(mul=(1), user=request.user)
+                count.save()
         else:
             timereset()
         timereset()
@@ -206,6 +209,12 @@ def mul(request):
 
         
         }
+    if request.user.is_authenticated:
+        starcount = Star.objects.filter(mul=(1), user=request.user).count
+        starcount = {"count":starcount}
+        context.update(starcount) 
+   
+        
     return render(request, 'calc/mul.html', context)
 
 
