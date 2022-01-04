@@ -1,0 +1,93 @@
+<title> Add </title>
+{% extends 'calc/index.html' %}
+
+{% block  calc%}
+{% load static %}
+
+
+{% if user.is_authenticated %}
+<h1 > Hello {{user.username|title}} </h1>
+{% else %}
+<h1 > Login to save your score! </h1>
+{% endif %}
+</div>
+<br>
+    <div class="testbox">
+        <form action = "" method = "post">
+        {% if form != li %}
+        <div class="banner" style="background-image: url({{wrong_image}}) ">
+        {% elif form == li %} 
+        <div class="banner" style="background-image: url({{right_image}}) ">
+         
+        {% endif %}
+          <h1></h1>
+        </div>
+        <div class="item">
+          
+          <div class="name-item">
+            {% csrf_token %}
+            
+            <p style="font-size: 40px; margin-left: auto;  margin-right: auto;">{{num1}}
+{% block operator %}
+            +
+{% endblock  %}
+            {{num2}} = 
+            <input id="input" class="form-control form-control-lg" style="width: 55px; font-size: 40px;"  type="text" name="value", placeholder="?">
+
+        </p>
+        
+        
+          </div>
+
+        </div>
+        
+      </div>
+        
+  
+      <div style="width: 50%; margin-left: auto;margin-right: auto;">
+         <center>  
+         {% if user.is_authenticated %}
+         <div class="container">
+          <img id="image" src="https://i.pinimg.com/originals/85/bb/b8/85bbb8a5eaf1c30aaaac3bf42e6d4eb5.png" width="33px"> 
+          <div class="centered"><b>{{count}}</b></div>
+        </div>
+          {% endif %}
+         <b style="color: rgb(97, 160, 4); font-size: larger;"> Correct: {{correct}} </b>
+         <b style="color: rgb(211, 9, 9);font-size: larger; ">Wrong: {{wrong}} </b>
+         <b style="color: rgb(123, 211, 9);font-size: larger; float: right;">{{left}} more to go!</b>
+         </center>
+        </div>
+
+
+<style>
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  float: left;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  </style>
+
+
+
+<script>
+    window.onload = function() {
+        document.getElementById("input").focus();
+    }
+</script>
+ 
+  </body>
+</html>
+{% endblock  %}
+
+
+
+

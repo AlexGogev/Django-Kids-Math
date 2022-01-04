@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello </title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="stylesheet" href="{%  static  'calc/main.css' %}">
+  </head>
+  <body>
+
+      <center>
+        <b><a href="../" style="text-decoration: none; color: rgba(30, 7, 73, 0.555);"> Addidion </a>
+            <a href="/sub" style="text-decoration: none; color: rgba(30, 7, 73, 0.555);"> Sunstraction </a>
+            <a href="/mul" style="text-decoration: none; color: rgba(30, 7, 73, 0.555);"> Multiplication </a>
+        </b>
+    </center>
+
+    <div class="testbox">
+        <form action = "" method = "post">
+        {% if form != li %}
+        <div class="banner" style="background-image: url({{wrong_image}}) ;
+          background-repeat: no-repeat;
+          background-position: center;
+          -webkit-background-size: contain;
+          -moz-background-size: contain;
+          -o-background-size: contain;
+          background-size: contain;
+          background-size: contain; width: 100%;
+          ">
+        {% elif form == li %} 
+        <div class="banner" style="background-image: url({{right_image}}) ;
+           background-repeat: no-repeat;
+          background-position: center;
+          -webkit-background-size: contain;
+          -moz-background-size: contain;
+          -o-background-size: contain;
+          background-size: contain; 
+          background-size: contain; width: 100%;">
+         
+        {% endif %}
+          <h1></h1>
+        </div>
+        <div class="item">
+          
+          <div class="name-item">
+            {% csrf_token %}
+            
+            <p style="font-size: 40px; margin-left: auto;  margin-right: auto;">{{num1}}
+{% block operator %}
+            +
+{% endblock  %}
+            {{num2}} = 
+            <input id="input" class="form-control form-control-lg" style="width: 45px; font-size: 40px;"  type="text" name="value", placeholder="?">
+
+        </p>
+        <br>
+        {{left}} more to do
+          </div>
+
+         <br>
+         <center>  
+         <b style="color: rgb(97, 160, 4); font-size: larger;"> Correct: {{correct}} </b><b style="color: rgb(211, 9, 9);font-size: larger;">Wrong: {{wrong}}</b>
+         </center>
+        
+      </div>
+        
+        </div>
+      
+    </div>
+
+<script>
+    window.onload = function() {
+        document.getElementById("input").focus();
+    }
+</script>
+ 
+  </body>
+</html>

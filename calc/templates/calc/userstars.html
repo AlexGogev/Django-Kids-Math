@@ -1,0 +1,79 @@
+<title> My Stars </title>
+{% extends 'calc/index.html' %}
+
+{% block  calc%}
+{% load static %}
+<br>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  float: left;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+<body>
+
+<h2> {{user.username}} score:</h2>
+
+<table>
+  <tr>
+    <th>Addition</th>
+    <th>Substraction</th>
+    <th>Multiplication</th>
+  </tr>
+  <tr>
+    <td>  
+        <div class="container">
+          <img id="image" src="https://i.pinimg.com/originals/85/bb/b8/85bbb8a5eaf1c30aaaac3bf42e6d4eb5.png" width="33px"> 
+          <div class="centered"><b>{{add}}</b></div>
+        </div></td>
+    <td>
+            <div class="container">
+          <img id="image" src="https://i.pinimg.com/originals/85/bb/b8/85bbb8a5eaf1c30aaaac3bf42e6d4eb5.png" width="33px"> 
+          <div class="centered"><b>{{sub}}</b></div>
+        </div></td>
+    </td> 
+    <td>
+        <div class="container">
+          <img id="image" src="https://i.pinimg.com/originals/85/bb/b8/85bbb8a5eaf1c30aaaac3bf42e6d4eb5.png" width="33px"> 
+          <div class="centered"><b>{{mul}}</b></div>
+        </div></td>
+    </td>
+  </tr>
+
+    <tr>
+    <td><a href="{% url 'add' %}"><i class="fa fa-plus"></i> Addition</a></td>
+    <td><a href="{% url 'sub' %}"><i class="fa fa-minus"></i> Substraction</a></td>
+    <td><a href="{% url 'mul' %}"><i class="fa fa-times"></i> Multiplication</a></td>
+  </tr>
+</table>
+
+
+{% endblock %}

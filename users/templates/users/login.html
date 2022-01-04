@@ -1,0 +1,27 @@
+<title> Login </title>
+{% extends 'calc/index.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block calc %}
+    <div class="content-section">
+        <form method="POST"  > 
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border_bottom mb-4"> Log In </legend>
+                {{form|crispy}}
+                
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-secondary" type="submit"> Log In </button>
+                <small class="text-muted ml-2">
+                    <a href="{% url 'password_reset' %}"> Forgot Password? </a>
+                </small>
+            </div>
+                    <div class="border-top pt-3">
+            <small class="text-muted"> Do you need an account? <a class="ml-2" href="{% url 'register' %}"}> Join now! </a>  </small> 
+        </div>
+        </form>
+
+    </div>
+{% endblock  %}
